@@ -190,7 +190,8 @@ typedef enum : NSUInteger {
         _paddingBottom = _paddingBottom + 20;
     }
     NSLog(@"CDVIonicKeyboard: updating frame");
-    CGRect f = [[UIScreen mainScreen] bounds];
+    //CGRect f = [[UIScreen mainScreen] bounds]; <-- Screen width is not correct when iPad is using split screen.
+    CGRect f = [[[[UIApplication sharedApplication] delegate] window] bounds];
     CGRect wf = self.webView.frame;
     switch (self.keyboardResizes) {
         case ResizeBody:
